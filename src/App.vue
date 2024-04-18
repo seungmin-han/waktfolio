@@ -1,7 +1,10 @@
 <template>
-  <RouterView />
+    <TheHeader />
+    <RouterView />
 </template>
 
-<script setup></script>
+<script setup>
+import { TheHeader } from '@/components/common';
+</script>
 
 <style scoped></style>

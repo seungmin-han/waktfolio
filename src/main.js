@@ -1,14 +1,18 @@
-import './assets/main.css'
+import './assets/main.css';
 
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+import View3D from '@egjs/vue3-view3d';
+import '@egjs/vue3-view3d/css/view3d-bundle.min.css';
 
-import App from './App.vue'
-import router from './router'
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
 
-const app = createApp(App)
+import App from './App.vue';
+import router from './router';
 
-app.use(createPinia())
-app.use(router)
+const app = createApp(App);
 
-app.mount('#app')
+app.use(createPinia());
+app.use(router);
+app.use(View3D);
+
+app.mount('#app');
