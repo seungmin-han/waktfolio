@@ -1,4 +1,17 @@
 <template>
+    <div class="pt-4 max-w-[1100px] w-full mx-auto">
+        <div
+            class="rounded-[24px] bg-[url(/assets/nakagin.JPG)] bg-center h-[780px] relative overflow-hidden gradient flex flex-col justify-end"
+        >
+            <div class="p-5 relative z-10">
+                <div class="flex flex-col">
+                    <h1 class="text-[28px] leading-[1.5] tracking-[-0.057em] text-[white]">
+                        TitleTitleTitleTitle
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="text-3xl">hello world!</div>
     <button class="border p-1" @click="savePicture">저장</button>
     <button class="border p-1" @click="flag = !flag">show / hide</button>
@@ -48,4 +61,8 @@ function savePicture() {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="postcss" scoped>
+.gradient {
+    @apply after:bg-gradient-to-t after:from-[#00000059] after:to-[#00000000] after:content-[''] after:w-full after:h-[140px] after:absolute after:bottom-0;
+}
+</style>
