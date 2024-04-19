@@ -1,5 +1,5 @@
 <template>
-    <div class="max-w-[1440px] w-full py-4 px-5 flex mx-auto relative">
+    <div class="max-w-[1100px] w-full py-4 px-5 flex mx-auto relative">
         <div id="logo">
             <img src="/images/logo.svg" alt="" />
         </div>
