@@ -12,7 +12,10 @@
   },
   "dependencies": {
     "@egjs/vue3-view3d": "^2.3.1",
+    "node-sass": "^9.0.0",
     "pinia": "^2.1.7",
+    "sass": "^1.75.0",
+    "sass-loader": "^14.2.1",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },
