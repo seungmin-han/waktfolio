@@ -6,7 +6,7 @@ services:
         restart: unless-stopped
         ports:
             - 80:80
-        volume:
+        volumes:
             - '/file:/file'
         networks:
             - waktfolio-network
