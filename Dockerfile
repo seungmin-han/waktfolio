@@ -6,7 +6,7 @@ RUN npm install --silent
 COPY . .
 RUN npm run build
 # production stage
-FROM nginx:stable-alpine as production-stage
+FROM nginx as production-stage
 COPY --from=build-stage /app/dist /usr/share/nginx/html 
 
 COPY ./default.conf /etc/enginx/conf.d/default.conf
