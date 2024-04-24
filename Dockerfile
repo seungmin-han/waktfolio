@@ -1,5 +1,6 @@
 # build stage
-FROM node:18.16.0 as build-stage WORKDIR /app
+FROM node:18.16.0 as build-stage 
+WORKDIR /app
 COPY package*.json ./
 RUN npm install --silent
 COPY . .
