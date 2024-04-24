@@ -19,12 +19,38 @@
             </label>
 
             <button @click="register">회원가입</button>
+
+            <img :src="tmp" alt="" />
         </div>
     </div>
 </template>
 
 <script setup>
-function register() {}
+import axios from 'axios';
+import { ref } from 'vue';
+
+const tmp = ref('');
+
+async function register() {
+    // const {
+    //     data: {
+    //         data: { profileImage },
+    //     },
+    // } = await axios.post('/api/member/login', {
+    //     loginId: 'asde',
+    //     password: 'asde',
+    // });
+
+    // tmp.value = `data:image/png;base64,${profileImage}`;
+    axios
+        .post('/api/member/login', {
+            loginId: 'asde',
+            password: 'asde',
+        })
+        .then((res) => {
+            tmp.value = `http://waktfolio.kro.kr:28081${res.data.data.profileImagePath}`;
+        });
+}
 
 function changeFile($e) {
     console.log($e.target.files);
