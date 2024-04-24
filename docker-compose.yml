@@ -1,0 +1,15 @@
+services:
+    waktfolio-frontend:
+        hostname: waktfolio-frontend
+        container_name: waktfolio-frontend
+        build: ./
+        restart: unless-stopped
+        ports:
+            - 80:80
+        volume:
+            - '/file:/file'
+        networks:
+            - waktfolio-network
+networks:
+    waktfolio-network:
+        external: true
