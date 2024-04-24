@@ -48,7 +48,7 @@ async function register() {
             password: 'asde',
         })
         .then((res) => {
-            tmp.value = `http://waktfolio.kro.kr:28081${res.data.data.profileImagePath}`;
+            tmp.value = `${res.data.data.profileImagePath}`;
         });
 }
 
