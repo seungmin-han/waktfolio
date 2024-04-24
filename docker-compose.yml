@@ -7,7 +7,7 @@ services:
         ports:
             - 80:80
         volumes:
-            - '/file:/file'
+            - '/file:/usr/share/nginx/html'
         networks:
             - waktfolio-network
 networks:
