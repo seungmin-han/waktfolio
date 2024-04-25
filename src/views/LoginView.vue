@@ -19,6 +19,7 @@
             </label>
 
             <button @click="register">회원가입</button>
+            <button @click="temp2">임시버튼</button>
 
             <img :src="tmp" alt="" />
         </div>
@@ -27,29 +28,49 @@
 
 <script setup>
 import axios from 'axios';
+import AWS from 'aws-sdk';
 import { ref } from 'vue';
 
 const tmp = ref('');
 
 async function register() {
-    // const {
-    //     data: {
-    //         data: { profileImage },
-    //     },
-    // } = await axios.post('/api/member/login', {
-    //     loginId: 'asde',
-    //     password: 'asde',
-    // });
-
-    // tmp.value = `data:image/png;base64,${profileImage}`;
     axios
         .post('/api/member/login', {
             loginId: 'asde',
             password: 'asde',
         })
         .then((res) => {
-            tmp.value = `${res.data.data.profileImagePath}`;
+            // tmp.value = `${res.data.data.profileImagePath}`;
         });
+}
+
+function temp2() {
+    const s3 = new AWS.S3({
+        accessKeyId: 'accessKey1',
+        secretAccessKey: 'verySecretKey1',
+        endpoint: 'localhost:5173',
+        sslEnabled: false,
+        s3ForcePathStyle: true,
+        signatureVersion: 'v2',
+    });
+
+    console.log(s3);
+
+    s3.getObject(
+        {
+            Bucket: 'waktfolio',
+            Key: '42f3b496-b481-450b-8ad6-cd77c946ec11profileImage/profileImage.jpg',
+        },
+        (err, data) => {
+            console.log(err, data);
+            const blob = new Blob([data.Body], { type: data.ContentType });
+            const reader = new FileReader();
+            reader.readAsDataURL(blob);
+            reader.onload = () => {
+                tmp.value = reader.result;
+            };
+        },
+    );
 }
 
 function changeFile($e) {
