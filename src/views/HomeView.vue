@@ -1,27 +1,31 @@
 <template>
-    <!-- <div class="pt-4 max-w-[1100px] w-full mx-auto">
-        <div
-            class="rounded-[24px] bg-[url(/assets/nakagin.JPG)] bg-center h-[780px] relative overflow-hidden gradient flex flex-col justify-end tracking-[-0.057em]"
-        >
-            <div class="p-5 relative z-10 flex justify-between">
-                <div class="flex flex-col leading-[1.5] text-[white]">
-                    <h1 class="text-[28px]">TitleTitleTitleTitle</h1>
-                    <span class="text-[18px]">User</span>
+    <div class="flex flex-col pt-4 max-w-[1100px] w-full mx-auto">
+        <div class="pb-10 flex justify-center h-[796px]">
+            <Flicking
+                ref="$flicking"
+                @ready="applyPanelStyles"
+                @changed="applyPanelStyles"
+                @move="applyPanelStyles"
+                :options="{ align: 'center', circular: true }"
+                :plugins="plugins"
+                class="relative"
+            >
+                <div key="1" class="origin-center w-[880px] h-[624px] bg-[rgba(0,0,0,1)]">1</div>
+                <div key="2" class="origin-center w-[880px] h-[624px] bg-[rgba(50,50,50,1)]">2</div>
+                <div key="3" class="origin-center w-[880px] h-[624px] bg-[rgba(100,100,100,1)]">
+                    3
                 </div>
-                <div class="button-wrap big">
-                    <div>
-                        <img src="/images/view.svg" alt="" />
-                        <span class="count">1005</span>
-                    </div>
-                    <div>
-                        <img src="/images/like.svg" alt="" />
-                        <span class="count">109</span>
-                    </div>
+                <div key="4" class="origin-center w-[880px] h-[624px] bg-[rgba(150,150,150,1)]">
+                    4
                 </div>
-            </div>
+                <template #viewport>
+                    <div class="flicking-pagination"></div>
+                </template>
+            </Flicking>
         </div>
-    </div> -->
-    <div class="text-3xl">hello world!</div>
+    </div>
+
+    <!-- <div class="text-3xl">hello world!</div>
     <button class="border p-1" @click="savePicture">저장</button>
     <button class="border p-1" @click="temp2">불러오기</button>
     <button class="border p-1" @click="flag = !flag">show / hide</button>
@@ -36,16 +40,23 @@
         skybox="/assets/sky-3.hdr"
         :exposure="1.2"
         :autoplay="{ delay: 2000 }"
-    />
+    /> -->
 </template>
 
 <script setup>
 import { ref } from 'vue';
+import Flicking from '@egjs/vue3-flicking';
+import { Pagination } from '@egjs/flicking-plugins';
+import '@egjs/flicking-plugins/dist/pagination.css';
+
+const $flicking = ref();
 
 const flag = ref(false);
 const viewer = ref();
 
 const blobSrc = ref('');
+
+const plugins = ref([new Pagination({ type: 'scroll' })]);
 
 function tmp(event) {
     flag.value = false;
@@ -58,6 +69,20 @@ function tmp(event) {
         viewer.value.view3D.load(URL.createObjectURL(blob));
     };
     reader.readAsArrayBuffer(event.target.files[0]);
+}
+
+function applyPanelStyles(e) {
+    e.currentTarget.panels.forEach((v) => {
+        console.log(v);
+        // if (v.toggleDirection == 'PREV') {
+
+        // }
+        const tmp = v.progress * -80;
+        const ab = Math.abs(v.progress);
+        const zIndex = parseInt(100 - ab * 100);
+        v.element.style.transform = `scale(${1 - 0.25 * ab}) translateX(${tmp}%)`;
+        v.element.style.zIndex = zIndex;
+    });
 }
 
 import AWS from 'aws-sdk';
