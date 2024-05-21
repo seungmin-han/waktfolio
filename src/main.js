@@ -2,6 +2,7 @@ import './assets/main.css';
 
 import View3D from '@egjs/vue3-view3d';
 import '@egjs/vue3-view3d/css/view3d-bundle.min.css';
+import '@egjs/vue3-flicking/dist/flicking.css';
 
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
