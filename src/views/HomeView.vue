@@ -1,6 +1,24 @@
 <template>
-    <div class="flex flex-col pt-4 max-w-[1100px] w-full mx-auto">
-        <div class="pb-10 flex justify-center h-[796px]">
+    <div class="flex flex-col pt-4 mt-4 max-w-[1100px] w-full mx-auto">
+        <div class="pb-10 flex justify-center h-[796px] relative">
+            <div class="w-full h-[624px] px-[35px] flex justify-between items-center absolute z-10">
+                <button
+                    class="flex items-center justify-center rounded-full bg-[#38383880]"
+                    @click="$flicking.prev()"
+                >
+                    <img
+                        src="/images/arrow_white.svg"
+                        class="rotate-180 w-[30px] h-[30px]"
+                        alt=""
+                    />
+                </button>
+                <button
+                    class="flex items-center justify-center rounded-full bg-[#38383880]"
+                    @click="$flicking.next()"
+                >
+                    <img src="/images/arrow_white.svg" class="w-[30px] h-[30px]" alt="" />
+                </button>
+            </div>
             <Flicking
                 ref="$flicking"
                 @ready="applyPanelStyles"
@@ -10,13 +28,29 @@
                 :plugins="plugins"
                 class="relative"
             >
-                <div key="1" class="origin-center w-[880px] h-[624px] bg-[rgba(0,0,0,1)]">1</div>
-                <div key="2" class="origin-center w-[880px] h-[624px] bg-[rgba(50,50,50,1)]">2</div>
-                <div key="3" class="origin-center w-[880px] h-[624px] bg-[rgba(100,100,100,1)]">
-                    3
+                <div class="w-[880px]">
+                    <div
+                        key="1"
+                        class="rounded-[30px] flex justify-center items-center text-[white] text-[50px] origin-center w-[880px] h-[624px] bg-[rgba(50,50,50,1)]"
+                    >
+                        1
+                    </div>
                 </div>
-                <div key="4" class="origin-center w-[880px] h-[624px] bg-[rgba(150,150,150,1)]">
-                    4
+                <div class="w-[880px]">
+                    <div
+                        key="2"
+                        class="rounded-[30px] flex justify-center items-center text-[white] text-[50px] origin-center w-[880px] h-[624px] bg-[rgba(100,100,100,1)]"
+                    >
+                        2
+                    </div>
+                </div>
+                <div class="w-[880px]">
+                    <div
+                        key="3"
+                        class="rounded-[30px] flex justify-center items-center text-[white] text-[50px] origin-center w-[880px] h-[624px] bg-[rgba(150,150,150,1)]"
+                    >
+                        3
+                    </div>
                 </div>
                 <template #viewport>
                     <div class="flicking-pagination"></div>
@@ -71,14 +105,21 @@ function tmp(event) {
     reader.readAsArrayBuffer(event.target.files[0]);
 }
 
+function wrapProgress(progress) {
+    if (progress >= 2) {
+        return progress - 3;
+    } else if (progress <= -2) {
+        return progress + 3;
+    }
+    return progress;
+}
+
 function applyPanelStyles(e) {
     e.currentTarget.panels.forEach((v) => {
-        console.log(v);
-        // if (v.toggleDirection == 'PREV') {
+        let progress = wrapProgress(v.progress, v.index);
+        let tmp = progress * -100;
+        let ab = Math.abs(progress);
 
-        // }
-        const tmp = v.progress * -80;
-        const ab = Math.abs(v.progress);
         const zIndex = parseInt(100 - ab * 100);
         v.element.style.transform = `scale(${1 - 0.25 * ab}) translateX(${tmp}%)`;
         v.element.style.zIndex = zIndex;
