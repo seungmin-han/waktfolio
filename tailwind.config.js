@@ -2,7 +2,11 @@
 export default {
     content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
     theme: {
-        extend: {},
+        extend: {
+            dropShadow: {
+                banner: '0px 3px 15px rgba(35, 35, 35, 0.2)',
+            },
+        },
         colors: {
             gray: {
                 200: '#f7f7f7',
