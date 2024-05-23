@@ -6,7 +6,7 @@ import VueDevTools from 'vite-plugin-vue-devtools';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    plugins: [vue(), VueDevTools()],
+    plugins: [vue()],
     define: {
         global: {},
     },
@@ -18,7 +18,7 @@ export default defineConfig({
     server: {
         proxy: {
             '^/api': {
-                target: 'http://waktfolio.kro.kr:28081',
+                target: 'http://192.168.0.109:8081',
                 changeOrigin: true,
             },
             '^/waktfolio': {
