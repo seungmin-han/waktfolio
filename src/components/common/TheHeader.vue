@@ -5,7 +5,10 @@
         </div>
         <div id="search-tab" class="ml-[83px] max-w-[400px] w-full flex flex-col gap-y-4">
             <div class="w-full border-b-[3px] border-b-gray-900 relative">
-                <input type="text" class="max-w-[370px] w-full leading-[29px] mb-2" />
+                <input
+                    type="text"
+                    class="max-w-[370px] w-full leading-[29px] mb-2 bg-[transparent]"
+                />
                 <button class="w-[30px] h-[30px] absolute top-[2px] right-0">
                     <img src="/images/search.svg" alt="" />
                 </button>
@@ -25,7 +28,7 @@
                 </div>
             </div>
         </div>
-        <div class="flex items-center gap-x-4 justify-end flex-1">
+        <div class="flex items-start gap-x-4 justify-end flex-1">
             <button>
                 <img src="/images/posting.svg" alt="" />
             </button>
