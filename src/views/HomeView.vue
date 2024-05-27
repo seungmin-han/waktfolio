@@ -3,76 +3,10 @@
         <!-- 배너 START -->
         <MainBanner />
         <!-- 배너 END -->
-        <div class="px-5 w-full flex flex-col items-center gap-y-12">
-            <div class="flex flex-col items-center gap-y-4 w-full" v-for="s in 3" :key="s">
-                <div class="flex justify-between items-center w-full">
-                    <span class="font-semibold text-[22px] text-[#383838]">최근 등록 순</span>
-                    <div class="flex items-center gap-x-4">
-                        <span>전체보기</span>
-                        <div class="flex items-center">
-                            <button
-                                class="w-7 h-7 border border-[#37383C10] rounded-tl-md rounded-bl-md flex justify-center items-center"
-                            >
-                                <img
-                                    src="/images/arrow_gray.svg"
-                                    alt=""
-                                    class="w-4 h-4 rotate-180"
-                                />
-                            </button>
-                            <button
-                                class="w-7 h-7 border border-[#37383C10] rounded-tr-md rounded-br-md flex justify-center items-center"
-                            >
-                                <img src="/images/arrow_gray.svg" alt="" class="w-4 h-4" />
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex items-center w-full">
-                    <div class="flex gap-x-4">
-                        <div class="flex flex-col gap-y-3" v-for="i in 3" :key="i">
-                            <div class="w-[343px] h-[244px] rounded-xl bg-[black]"></div>
-                            <div class="px-1.5 flex justify-between items-center">
-                                <div class="flex flex-col gap-y-1">
-                                    <span class="text-16 font-semibold text-[#171719]"
-                                        >TitleTitleTitle</span
-                                    >
-                                    <div class="flex gap-x-1">
-                                        <div class="w-4 h-4 rounded-full bg-[#D9D9D9]"></div>
-                                        <span
-                                            class="font-medium text-[13px] text-[rgba(55, 56, 60, 0.61)]"
-                                            >User</span
-                                        >
-                                    </div>
-                                </div>
-                                <div class="flex items-center gap-x-4">
-                                    <button class="flex flex-col items-center">
-                                        <img
-                                            src="/images/view.svg"
-                                            alt=""
-                                            class="w-[30px] h-[30px]"
-                                        />
-                                        <span
-                                            class="font-semibold text-[10px] text-[rgba(55, 56, 60, 0.61)]"
-                                            >20</span
-                                        >
-                                    </button>
-                                    <button class="flex flex-col items-center">
-                                        <img
-                                            src="/images/like.svg"
-                                            alt=""
-                                            class="w-[30px] h-[30px]"
-                                        />
-                                        <span
-                                            class="font-semibold text-[10px] text-[rgba(55, 56, 60, 0.61)]"
-                                            >10</span
-                                        >
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="px-5 w-full flex flex-col items-center gap-y-12 pb-12">
+            <ContentSlide title="최신 등록 순" :list="slideList" />
+            <ContentSlide title="24시간 킹아 순" :list="slideList" />
+            <ContentSlide title="24시간 조회수 순" :list="slideList" />
         </div>
     </div>
 
@@ -95,11 +29,54 @@
 </template>
 
 <script setup>
-import { MainBanner } from '@/components/main';
+import { MainBanner, ContentSlide } from '@/components/main';
 import { ref } from 'vue';
 
 const flag = ref(false);
 const viewer = ref();
+
+const slideList = ref([
+    {
+        contentId: '82be2a61-0aae-4312-8740-20fce78e8b041',
+        memberName: 'test123',
+        title: 'delete',
+        thumbnailImagePath: null,
+        likes: 20,
+        views: 10,
+    },
+    {
+        contentId: '82be2a61-0aae-4312-8740-20fce78e8b042',
+        memberName: 'test123',
+        title: 'delete',
+        thumbnailImagePath: null,
+        likes: 20,
+        views: 10,
+    },
+    {
+        contentId: '82be2a61-0aae-4312-8740-20fce78e8b043',
+        memberName: 'test123',
+        title: 'delete',
+        thumbnailImagePath: null,
+        likes: 20,
+        views: 10,
+    },
+    {
+        contentId: '82be2a61-0aae-4312-8740-20fce78e8b044',
+        memberName: 'test123',
+        title: 'delete',
+        thumbnailImagePath: null,
+        likes: 20,
+        views: 10,
+    },
+    {
+        contentId: '82be2a61-0aae-4312-8740-20fce78e8b045',
+        memberName: 'test123',
+        title: 'delete',
+        thumbnailImagePath: null,
+        likes: 20,
+        views: 10,
+    },
+]);
 
 const blobSrc = ref('');
 
