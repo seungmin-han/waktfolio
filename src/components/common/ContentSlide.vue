@@ -15,8 +15,8 @@
                     </button>
                     <button
                         @click="$flk.next()"
-                        :disabled="currentIndex >= 2"
-                        :class="{ 'opacity-50': currentIndex >= 2 }"
+                        :disabled="currentIndex >= maxIndex"
+                        :class="{ 'opacity-50': currentIndex >= maxIndex }"
                         class="w-7 h-7 border border-[#37383C10] rounded-tr-md rounded-br-md flex justify-center items-center"
                     >
                         <img src="/images/arrow_gray.svg" alt="" class="w-4 h-4" />
@@ -34,12 +34,20 @@
 
 <script setup>
 import Flicking from '@egjs/vue3-flicking';
-import { ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 
-const props = defineProps(['title']);
+const props = defineProps(['title', 'perPageCount']);
 
 const $flk = ref();
 const currentIndex = ref(0);
+
+const count = ref(0);
+
+const maxIndex = computed(() => count.value - props.perPageCount);
+
+onMounted(() => {
+    count.value = $flk.value.panels.length;
+});
 
 function onSlide() {
     currentIndex.value = $flk.value.index;
@@ -52,8 +60,8 @@ const options = ref({
 });
 
 function onClickPrev() {
-    if (currentIndex.value > 2) {
-        $flk.value.moveTo(1);
+    if (maxIndex.value < currentIndex.value) {
+        $flk.value.moveTo(maxIndex.value - 1);
     } else {
         $flk.value.prev();
     }
