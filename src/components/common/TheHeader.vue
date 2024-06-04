@@ -1,7 +1,9 @@
 <template>
     <div class="max-w-[1100px] w-full py-4 px-5 flex mx-auto relative">
         <div id="logo">
-            <img src="/images/logo.svg" alt="" />
+            <RouterLink to="/">
+                <img src="/images/logo.svg" alt="" />
+            </RouterLink>
         </div>
         <div id="search-tab" class="ml-[83px] max-w-[400px] w-full flex flex-col gap-y-4">
             <div class="w-full border-b-[3px] border-b-gray-900 relative">
