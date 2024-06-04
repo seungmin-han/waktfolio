@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col gap-y-3 mx-2">
+    <div class="flex flex-col gap-y-3 mr-4 last:mr-0 content-item">
         <div class="w-[343px] h-[244px] rounded-xl bg-[black]"></div>
         <div class="px-1.5 flex justify-between items-center">
             <div class="flex flex-col gap-y-1">
