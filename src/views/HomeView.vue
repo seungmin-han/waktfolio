@@ -4,17 +4,17 @@
         <MainBanner />
         <!-- 배너 END -->
         <div class="px-5 w-full flex flex-col items-center gap-y-12 pb-12">
-            <ContentSlide title="최신 등록 순" :list="slideList">
+            <ContentSlide title="최신 등록 순" :perPageCount="3">
                 <template #content>
                     <ContentItem v-for="item in slideList" :key="item.contentId" :item="item" />
                 </template>
             </ContentSlide>
-            <ContentSlide title="24시간 킹아 순" :list="slideList">
+            <ContentSlide title="24시간 킹아 순" :perPageCount="3">
                 <template #content>
                     <ContentItem v-for="item in slideList" :key="item.contentId" :item="item" />
                 </template>
             </ContentSlide>
-            <ContentSlide title="24시간 조회수 순" :list="slideList">
+            <ContentSlide title="24시간 조회수 순" :perPageCount="3">
                 <template #content>
                     <ContentItem v-for="item in slideList" :key="item.contentId" :item="item" />
                 </template>
