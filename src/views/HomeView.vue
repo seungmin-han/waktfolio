@@ -4,9 +4,21 @@
         <MainBanner />
         <!-- 배너 END -->
         <div class="px-5 w-full flex flex-col items-center gap-y-12 pb-12">
-            <ContentSlide title="최신 등록 순" :list="slideList" />
-            <ContentSlide title="24시간 킹아 순" :list="slideList" />
-            <ContentSlide title="24시간 조회수 순" :list="slideList" />
+            <ContentSlide title="최신 등록 순" :list="slideList">
+                <template #content>
+                    <ContentItem v-for="item in slideList" :key="item.contentId" :item="item" />
+                </template>
+            </ContentSlide>
+            <ContentSlide title="24시간 킹아 순" :list="slideList">
+                <template #content>
+                    <ContentItem v-for="item in slideList" :key="item.contentId" :item="item" />
+                </template>
+            </ContentSlide>
+            <ContentSlide title="24시간 조회수 순" :list="slideList">
+                <template #content>
+                    <ContentItem v-for="item in slideList" :key="item.contentId" :item="item" />
+                </template>
+            </ContentSlide>
         </div>
     </div>
 
@@ -29,7 +41,8 @@
 </template>
 
 <script setup>
-import { MainBanner, ContentSlide } from '@/components/main';
+import { MainBanner } from '@/components/main';
+import { ContentSlide, ContentItem } from '@/components/common';
 import { ref } from 'vue';
 
 const flag = ref(false);
