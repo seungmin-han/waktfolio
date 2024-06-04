@@ -15,6 +15,9 @@ export default {
                 900: '#383838',
             },
         },
+        fontFamily: {
+            pretendard: ['Pretendard'],
+        },
         fontSize: {
             16: '16px',
             14: '14px',
