@@ -57,7 +57,7 @@ import '@egjs/flicking-plugins/dist/pagination.css';
 
 const $flicking = ref();
 
-const plugins = ref([new Pagination({ type: 'scroll' })]);
+const plugins = ref([new Pagination({ type: 'bullet', bulletCount: 3 })]);
 
 function wrapProgress(progress) {
     if (progress >= 2) {
@@ -96,6 +96,21 @@ function applyPanelStyles(e) {
 
 :deep(.flicking-pagination-bullet) {
     @apply w-2.5 h-2.5;
+}
+
+:deep(.flicking-pagination-bullet-active) {
+    @apply scale-[80%];
+}
+:deep(.flicking-pagination-bullet-prev) {
+    @apply scale-[80%];
+}
+
+:deep(.flicking-pagination-bullet-next2) {
+    @apply scale-[60%];
+}
+
+:deep(.flicking-pagination-bullet-prev2) {
+    @apply scale-[60%];
 }
 
 :deep(.flicking-pagination) {
