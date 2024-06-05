@@ -4,12 +4,24 @@
             <ContentSlide title="“태그 명”이 포함된 유저 검색 결과" :perPageCount="6">
                 <template #content>
                     <div
+                        class="mr-4 last:mr-0 w-[163px] bg-[white] gap-y-1 py-4 rounded-xl flex flex-col items-center border border-[#70737c29]"
+                    >
+                        <img src="/images/profile_large.svg" alt="" class="w-20 h-20" />
+                        <span
+                            class="font-semibold leading-6 text-[#171719] max-w-[150px] overflow-hidden text-ellipsis whitespace-nowrap"
+                            >김수한무거북이와두루미삼천갑자동방삭</span
+                        >
+                    </div>
+                    <div
                         v-for="i in 10"
                         :key="i"
                         class="mr-4 last:mr-0 w-[163px] bg-[white] py-4 rounded-xl flex flex-col items-center border border-[#70737c29]"
                     >
                         <img src="/images/profile_large.svg" alt="" class="w-20 h-20" />
-                        <span class="font-semibold leading-6 text-[#171719]">User</span>
+                        <span
+                            class="font-semibold leading-6 text-[#171719] max-w-[150px] overflow-hidden text-ellipsis whitespace-nowrap"
+                            >User</span
+                        >
                     </div>
                 </template>
             </ContentSlide>
