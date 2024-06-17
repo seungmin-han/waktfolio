@@ -1,6 +1,6 @@
 <template>
     <div class="pb-12 flex justify-center h-[796px] relative border-b border-[#D3D3D3]">
-        <div class="w-full h-[624px] px-[35px] flex justify-between items-center absolute z-10">
+        <div class="w-full top-[297px] px-[35px] flex justify-between items-center absolute z-10">
             <button
                 class="flex items-center justify-center rounded-full bg-[#38383880]"
                 @click="$flicking.prev()"
